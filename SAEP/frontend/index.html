@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAEP Saúde</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="login">
+        <div class="login-card">
+            <div class="logo">SAEP</div>
+
+            <h1>SAEP Saúde</h1>
+            <p class="subtitulo">Compartilhe suas atividades</p>
+
+            <form id="form-login">
+                <input type="email" id="login-email" placeholder="E-mail" required>
+                <input type="password" id="login-senha" placeholder="Senha" required>
+
+                <button type="submit">Entrar</button>
+            </form>
+
+            <p id="erro-login" class="mensagem"></p>
+
+            <button id="btn-mostrar-cadastro" class="btn-secundario">
+                Criar conta
+            </button>
+        </div>
+    </div>
+
+    <div id="cadastro" class="oculto">
+        <div class="login-card">
+            <div class="logo">SAEP</div>
+
+            <h1>Criar conta</h1>
+            <p class="subtitulo">Cadastre-se no SAEP Saúde</p>
+
+            <form id="form-cadastro">
+                <input type="text" id="cadastro-nome" placeholder="Nome completo" required>
+                <input type="email" id="cadastro-email" placeholder="E-mail" required>
+                <input type="password" id="cadastro-senha" placeholder="Senha" required>
+                <input type="text" id="cadastro-foto" placeholder="URL da foto (opcional)">
+
+                <button type="submit">Cadastrar</button>
+            </form>
+
+            <p id="mensagem-cadastro" class="mensagem"></p>
+
+            <button id="btn-voltar-login" class="btn-secundario">
+                Voltar para login
+            </button>
+        </div>
+    </div>
+
+    <main id="sistema" class="oculto">
+
+        <header>
+            <div class="header-logo">
+                SAEP Saúde
+            </div>
+
+            <div class="header-usuario">
+                <span id="usuario-nome"></span>
+                <button id="btn-logout">Sair</button>
+            </div>
+        </header>
+
+        <div class="layout">
+
+            <aside class="perfil">
+
+                <div class="perfil-foto">
+                    <img id="perfil-imagem" src="" alt="Foto do usuário">
+                    <span id="perfil-inicial">U</span>
+                </div>
+
+                <h2 id="perfil-nome">Usuário</h2>
+
+                <p id="perfil-email"></p>
+
+                <div class="perfil-linha"></div>
+
+                <p class="perfil-info">
+                    <strong id="total-atividades">0</strong>
+                    atividades
+                </p>
+
+                <button id="btn-nova-atividade" class="btn-principal">
+                    + Nova atividade
+                </button>
+
+            </aside>
+
+            <section class="conteudo">
+
+                <div class="titulo-pagina">
+                    <div>
+                        <h1>Atividades</h1>
+                        <p>Confira as atividades da comunidade.</p>
+                    </div>
+                </div>
+
+                <div class="filtros">
+
+                    <input
+                        type="text"
+                        id="filtro-busca"
+                        placeholder="Buscar atividade..."
+                    >
+
+                    <select id="filtro-tipo">
+                        <option value="">Todas as atividades</option>
+                        <option value="corrida">Corrida</option>
+                        <option value="caminhada">Caminhada</option>
+                        <option value="trilha">Trilha</option>
+                    </select>
+
+                    <button id="btn-filtrar">
+                        Filtrar
+                    </button>
+
+                </div>
+
+                <div id="formulario-atividade" class="atividade-form oculto">
+
+                    <div class="form-titulo">
+                        <h2>Nova atividade</h2>
+                        <button id="btn-fechar-formulario">×</button>
+                    </div>
+
+                    <form id="form-atividade">
+
+                        <input
+                            type="text"
+                            id="atividade-titulo"
+                            placeholder="Título da atividade"
+                            required
+                        >
+
+                        <textarea
+                            id="atividade-descricao"
+                            placeholder="Descrição"
+                        ></textarea>
+
+                        <div class="grid-form">
+
+                            <select id="atividade-tipo" required>
+                                <option value="">Tipo</option>
+                                <option value="corrida">Corrida</option>
+                                <option value="caminhada">Caminhada</option>
+                                <option value="trilha">Trilha</option>
+                            </select>
+
+                            <input
+                                type="date"
+                                id="atividade-data"
+                                required
+                            >
+
+                            <input
+                                type="time"
+                                id="atividade-horario"
+                            >
+
+                            <input
+                                type="number"
+                                id="atividade-distancia"
+                                placeholder="Distância (km)"
+                                step="0.01"
+                            >
+
+                            <input
+                                type="text"
+                                id="atividade-duracao"
+                                placeholder="Duração"
+                            >
+
+                            <input
+                                type="number"
+                                id="atividade-calorias"
+                                placeholder="Calorias"
+                                step="0.01"
+                            >
+
+                            <input
+                                type="text"
+                                id="atividade-local"
+                                placeholder="Local"
+                            >
+
+                            <input
+                                type="text"
+                                id="atividade-imagem"
+                                placeholder="URL da imagem"
+                            >
+
+                        </div>
+
+                        <button type="submit" class="btn-principal">
+                            Publicar atividade
+                        </button>
+
+                    </form>
+
+                    <p id="mensagem-atividade" class="mensagem"></p>
+
+                </div>
+
+                <div id="lista-atividades"></div>
+
+                <div id="paginacao" class="paginacao"></div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
